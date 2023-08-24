@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: 1-create-sms-table.yaml
+      relativeToChangelogFile: true

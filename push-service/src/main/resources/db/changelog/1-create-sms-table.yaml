@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Tata Naumovets
+      changes:
+        - createTable:
+            tableName: sms
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true
+              - column:
+                  name: user_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: sms_user_fk
+                    references: user_service.user(id)
+              - column:
+                  name: policy_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: sms_policy_fk
+                    references: policy_service.policy(id)
+              - column:
+                  name: key
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false

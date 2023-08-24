@@ -1,0 +1,61 @@
+services:
+  # DataBase
+  # - PostgreSQL database
+  postgres-db:
+    image: postgres:15.1
+    container_name: postgres-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: microservice-db
+    volumes:
+      - ./postgres/create_db.sql:/docker-entrypoint-initdb.d/create_db.sql
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+
+  # MainService
+  main-service:
+    depends_on:
+      - policy-service
+      - push-service
+      - user-service
+    image: main-service
+    build: main-service
+    container_name: main-service
+    ports:
+      - 8080:8080
+
+  # PolicyService
+  policy-service:
+    depends_on:
+      - postgres-db
+    image: policy-service
+    build: policy-service
+    container_name: policy-service
+    ports:
+      - 8081:8080
+
+  # PushService
+  push-service:
+    depends_on:
+      - postgres-db
+    image: push-service
+    build: push-service
+    container_name: push-service
+    ports:
+      - 8082:8080
+
+  # UserService
+  user-service:
+    depends_on:
+      - postgres-db
+    image: user-service
+    build: user-service
+    container_name: user-service
+    ports:
+      - 8083:8080
+
+volumes:
+  pgdata:

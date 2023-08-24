@@ -1,0 +1,55 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Tata Naumovets
+      changes:
+        - createTable:
+            tableName: policy
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true
+              - column:
+                  name: user_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: policy_use_fk
+                    references: user_service.user(id)
+              - column:
+                  name: policy_number
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: insurance_company
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: dt_since
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: dt_expiration
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: deleted_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_active
+                  type: boolean

@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: user-service
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://localhost:5433/microservice-db?currentSchema=user_service
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    liquibase-schema: user_service
+    enabled: true
+
+server:
+  port: 8083

@@ -1,0 +1,13 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'microservice-project'
+
+include 'main-service'
+include 'user-service'
+include 'policy-service'
+include "push-service"
+

@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - include:
+      file: 1-create-email-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 2-create-phone-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 3-create-social-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 4-create-user-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 5-create-account-table.yaml
+      relativeToChangelogFile: true

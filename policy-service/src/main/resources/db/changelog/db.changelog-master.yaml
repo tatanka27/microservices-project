@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: 1-create-policy-table.yaml
+      relativeToChangelogFile: true

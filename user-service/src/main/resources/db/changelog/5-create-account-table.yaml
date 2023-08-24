@@ -1,0 +1,56 @@
+databaseChangeLog:
+  - changeSet:
+      id: 5
+      author: Tata Naumovets
+      changes:
+        - createTable:
+            tableName: account
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true
+              - column:
+                  name: user_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: account_user_fk
+                    references: user(id)
+              - column:
+                  name: email_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: account_email_fk
+                    references: email(id)
+              - column:
+                  name: phone_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: account_phone_fk
+                    references: phone(id)
+              - column:
+                  name: social_id
+                  type: uuid
+                  constraints:
+                    foreignKeyName: account_social_fk
+                    references: social(id)
+              - column:
+                  name: balance
+                  type: double
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: deleted_at
+                  type: timestamp
+              - column:
+                  name: update_at
+                  type: timestamp
+              - column:
+                  name: is_active
+                  type: boolean
